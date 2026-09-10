@@ -1,0 +1,4 @@
+batch,split_h5ad,cellbender_h5
+P3,/home/rachel/analysis/utriclemouse/qualitycontrol/nextflow/results/anndatas/cellbender/adata_group_P3.h5,/home/rachel/analysis/utriclemouse/qualitycontrol/nextflow/results/anndatas/cellbender/cellbender_P3.h5
+P5,/home/rachel/analysis/utriclemouse/qualitycontrol/nextflow/results/anndatas/cellbender/adata_group_P5.h5,/home/rachel/analysis/utriclemouse/qualitycontrol/nextflow/results/anndatas/cellbender/cellbender_P5.h5
+B1,/home/rachel/analysis/utriclemouse/qualitycontrol/nextflow/results/anndatas/cellbender/adata_group_P5.h5,/home/rachel/analysis/utriclemouse/qualitycontrol/nextflow/results/anndatas/cellbender/cellbender_B1.h5

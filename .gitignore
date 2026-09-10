@@ -1,0 +1,22 @@
+.nextflow*
+work/
+data/
+results/
+.DS_Store
+testing/
+testing*
+*.pyc
+__pycache__/
+.vscode/
+
+# conf: keep only the test, myriad, and base config files
+conf/*
+!conf/test.config
+!conf/myriad.config
+!conf/base.config
+
+# containers: keep only the .def build recipes, not the built .sif images
+containers/*.sif
+
+# test: exclude the extra tiny/dev h5ad not part of the two required test files
+test/adata_test_tiny.h5ad

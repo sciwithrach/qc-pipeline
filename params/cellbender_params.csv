@@ -1,0 +1,5 @@
+batch,total_droplets_included,expected_cells
+P3,8000,3000
+P5,11000,5500
+B1,100000,40000
+B2,200000,70000

@@ -1,0 +1,13 @@
+Bootstrap: docker
+From: bioconductor/bioconductor_docker:RELEASE_3_21
+
+%help
+    R environment for scSHC, clustree, and scDblFinder clustering processes.
+
+%post
+    Rscript -e "install.packages('pak', repos = 'https://r-lib.github.io/p/pak/stable/')"
+
+    Rscript -e "options(BiocManager.version = '3.21'); pak::pak(c('ggpubr', 'clustree', 'anndataR', 'bioc::scDblFinder', 'rhdf5', 'igrabski/sc-SHC'), lib = .libPaths()[1])"
+
+%runscript
+    exec "$@"

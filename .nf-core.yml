@@ -1,0 +1,23 @@
+repository_type: pipeline
+nf_core_version: "3.0.0"
+org_path: null
+lint:
+  files_exist: false
+  files_unchanged: false
+  actions_ci: false
+  multiqc_config: false
+template:
+  name: utricleqc
+  author: Rachel Honeyghan-Williams
+  description: QC pipeline for mouse utricle single-cell data — cell calling, doublet detection, minimal filtering, dimensionality reduction, clustering and outlier removal.
+  org: Lipovsek Lab, UCL Ear Institute
+  version: 1.0.0
+  outdir: qc-pipeline-nfcore
+  skip_features:
+    - github
+    - ci
+    - multiqc
+    - github_badges
+    - igenomes
+    - nf_schema
+    - fastqc

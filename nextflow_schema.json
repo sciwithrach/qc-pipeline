@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/lipovsek-lab/utricleqc/master/nextflow_schema.json",
+  "title": "utricleqc pipeline parameters",
+  "description": "QC pipeline for mouse utricle single-cell data.",
+  "type": "object",
+  "$defs": {
+    "qc_pipeline_options": {
+      "title": "QC pipeline options (main.nf)",
+      "type": "object",
+      "properties": {
+        "raw_adata": {
+          "type": "string",
+          "format": "file-path",
+          "description": "Absolute path to the raw AnnData (.h5ad) file. Should contain all cells and all genes if running CellBender."
+        },
+        "batch": {
+          "type": "string",
+          "description": "Name of the batch ID column in adata.obs."
+        },
+        "celltype_csv": {
+          "type": "string",
+          "format": "file-path",
+          "description": "CSV file used for simple marker-based cell typing."
+        },
+        "metadata": {
+          "type": "string",
+          "description": "obs column used for QC/embedding plot colouring during dimensionality reduction."
+        },
+        "skip_cellbender": {
+          "type": "boolean",
+          "default": true,
+          "description": "Skip CellBender ambient-RNA/cell-calling correction (set false only when raw_adata contains all droplets, not just called cells)."
+        },
+        "skip_scSHC": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip scSHC clustering (memory intensive)."
+        },
+        "cellbender_csv": {
+          "type": "string",
+          "format": "file-path",
+          "description": "Optional CSV with per-batch CellBender settings (columns: batch, total_droplets_included, expected_cells). Leave unset to let CellBender estimate all values automatically."
+        },
+        "join_csv": {
+          "type": "string",
+          "format": "file-path",
+          "description": "Optional CSV to join adatas after CellBender, as an alternative entry point to the workflow."
+        }
+      }
+    },
+    "outlier_removal_options": {
+      "title": "Outlier removal options (workflows/outlier_removal.nf)",
+      "type": "object",
+      "properties": {
+        "adata": {
+          "type": "string",
+          "format": "file-path",
+          "description": "AnnData (.h5ad) produced by a prior qc_pipeline run, to filter outliers from."
+        },
+        "clusters": {
+          "type": "string",
+          "description": "obs column holding cluster labels used for outlier detection."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "Short label used in output file names for this run (e.g. 'alldata', 'postnatal')."
+        },
+        "csv_paths": {
+          "type": "string",
+          "description": "Glob of prior report_stats CSVs to fold into the filtering summary plot."
+        },
+        "batch_csv_paths": {
+          "type": "string",
+          "description": "Optional glob of prior per-batch report_stats CSVs to fold into the filtering summary plot."
+        },
+        "doublets": {
+          "type": "string",
+          "description": "obs column holding doublet calls used for outlier detection."
+        }
+      }
+    },
+    "generic_options": {
+      "title": "Generic options",
+      "type": "object",
+      "properties": {
+        "outdir": {
+          "type": "string",
+          "format": "directory-path",
+          "default": "results",
+          "description": "Output directory where results are published."
+        }
+      }
+    }
+  },
+  "allOf": [
+    { "$ref": "#/$defs/qc_pipeline_options" },
+    { "$ref": "#/$defs/outlier_removal_options" },
+    { "$ref": "#/$defs/generic_options" }
+  ]
+}
