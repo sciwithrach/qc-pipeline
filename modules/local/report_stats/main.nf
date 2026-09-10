@@ -18,4 +18,10 @@ process report_stats {
     """
     report_stats.py --adata ${adata} --descriptor ${descriptor} ${batch_arg}
     """
+
+    stub:
+    """
+    touch report_stats_${descriptor}.csv
+    touch report_stats_${descriptor}_batch.csv
+    """
 }

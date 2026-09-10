@@ -69,6 +69,38 @@ This workflow currently only runs Cellbender without GPU acceleration.
 As such, I recommend you run Cellbender separately first with GPU acceleration
 and use the `skip_cellbender` parameter to use your output in this pipeline.
 
+## Running with `skip_cellbender = true` (default)
+
+When `skip_cellbender` is `true`, `main.nf` skips cell calling entirely —
+the Cellbender/batch-splitting/joining processes never run, and `raw_adata`
+is used as-is as the starting point for QC. This means:
+
+- **`raw_adata`** must already be a *cell-called* AnnData (empty droplets /
+  ambient RNA already removed), not the fully unfiltered matrix — e.g. the
+  output of a Cellbender run done separately with GPU acceleration (see
+  above), or already filtered by your own thresholding. No empty-droplet
+  removal happens implicitly in this mode.
+- **`batch`** must name an existing column in `raw_adata.obs` (e.g. `"plate"`
+  in `conf/test.config`) — used to group cells for batch-aware QC
+  plots/reports and passed to `run_vaeda`/`run_scDblFinder` for batch-aware
+  doublet detection.
+- **`metadata`** must name an existing column in `raw_adata.obs` (e.g.
+  `"sample"` in `conf/test.config`) — used as the colouring/grouping
+  variable in QC plots and summary stats. Any numeric or categorical obs
+  column works.
+- **`celltype_csv`**, if provided, must be a CSV with **no header row**:
+  column 1 is a cell-type label, the remaining columns are marker gene
+  symbols for that type (rows can have different numbers of marker
+  columns — see `test/celltype_test.csv` for a real example). Marker genes
+  not found in `adata.var_names` are silently ignored, so check gene
+  symbols match your `.var_names` naming convention.
+
+If `skip_cellbender = false` instead, `raw_adata` should be the *fully
+unfiltered* matrix, and the pipeline additionally accepts
+`params/cellbender_params.csv` — an optional per-batch settings file
+(columns: `batch, total_droplets_included, expected_cells`; omit a value or
+the whole file to let Cellbender estimate automatically).
+
 ## License
 
 Released under the standard MIT license.

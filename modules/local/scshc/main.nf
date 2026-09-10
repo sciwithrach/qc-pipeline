@@ -16,4 +16,11 @@ process scSHC {
     """
     scSHC.R ${adata} ${task.cpus}
     """
+
+    stub:
+    """
+    touch scSHC_clusters.csv
+    touch scSHC_clusters.png
+    touch scSHC_results.rds
+    """
  }

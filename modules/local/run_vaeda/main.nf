@@ -15,4 +15,9 @@ process run_vaeda {
     """
     run_vaeda.py --adata ${adata} --batch ${batch}
     """
+
+    stub:
+    """
+    touch doublets_vaeda.csv
+    """
  }

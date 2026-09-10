@@ -24,4 +24,13 @@
     """
     topometry.py --adata ${adata} --descriptor ${descriptor} --metadata ${metadata}
     """
+
+    stub:
+    """
+    touch adata_topometry_${descriptor}.h5ad
+    touch topometry_object_${descriptor}.pkl
+    touch pca_variance_ratio_${descriptor}.png
+    touch geometry_preservation_${descriptor}.png
+    touch embeddings_comparison_${descriptor}.png
+    """
  }

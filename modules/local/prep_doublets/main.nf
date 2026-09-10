@@ -19,4 +19,10 @@
     """
     prep_doublets.py --adata ${adata}
     """
+
+    stub:
+    """
+    touch adata_scDblFinder_in.h5ad
+    touch adata_vaeda_in.h5ad
+    """
  }

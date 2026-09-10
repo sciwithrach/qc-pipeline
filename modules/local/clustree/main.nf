@@ -19,4 +19,9 @@
     """
     clustree.R ${adata} ${celltype_csv}
     """
+
+    stub:
+    """
+    touch clustree.png
+    """
  }

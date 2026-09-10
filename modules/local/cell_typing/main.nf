@@ -20,4 +20,9 @@
     """
     cell_typing.py --adata ${adata} --type-csv ${type_csv} --descriptor ${descriptor}
     """
+
+    stub:
+    """
+    touch simple_cell_types_${descriptor}.csv
+    """
  }

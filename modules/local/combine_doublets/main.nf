@@ -22,4 +22,10 @@
     """
     combine_doublets.py --adata ${adata} --vaeda-csv ${vaeda_csv} --scdblfinder-csv ${scdblfinder_csv} --batch ${batch_id}
     """
+
+    stub:
+    """
+    touch adata_doublets.h5ad
+    touch doublets_comparison.png
+    """
  }

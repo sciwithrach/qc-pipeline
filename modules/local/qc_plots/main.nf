@@ -16,4 +16,9 @@ process qc_plots {
     """
     qc_plots.py --adata ${adata} --batch ${batch} --descriptor ${descriptor}
     """
+
+    stub:
+    """
+    touch qcplot_stub_${descriptor}.png
+    """
 }

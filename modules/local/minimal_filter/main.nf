@@ -19,4 +19,9 @@
     """
     minimal_filter.py --adata ${adata} --descriptor ${descriptor}
     """
+
+    stub:
+    """
+    touch adata_minimal_filter_${descriptor}.h5ad
+    """
  }

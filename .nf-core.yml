@@ -6,6 +6,11 @@ lint:
   files_unchanged: false
   actions_ci: false
   multiqc_config: false
+  # No module emits versions.yml (this pipeline has no MultiQC/version-tracking
+  # ecosystem, consistent with skip_features: multiqc above), so the nf-test
+  # versions.yml-snapshot check can never pass here.
+  nf_test_content:
+    - tests/main.nf.test
 template:
   name: utricleqc
   author: Rachel Honeyghan-Williams

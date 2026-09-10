@@ -20,4 +20,10 @@
     """
     run_scDblFinder.R ${adata} ${batch} ${task.cpus}
     """
+
+    stub:
+    """
+    touch doublets_scdblfinder.csv
+    touch sessionInfo_doublets.txt
+    """
  }

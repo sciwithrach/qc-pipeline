@@ -9,6 +9,10 @@ testing*
 __pycache__/
 .vscode/
 
+# nf-test run artifacts
+.nf-test/
+.nf-test.log
+
 # conf: keep only the test, myriad, and base config files
 conf/*
 !conf/test.config

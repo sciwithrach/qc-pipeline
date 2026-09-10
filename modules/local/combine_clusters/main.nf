@@ -17,4 +17,10 @@ process combine_clusters {
     """
     combine_clusters.py --adata ${adata} --celltype-csv ${celltype_csv} --scshc-csv ${scSHC_csv}
     """
+
+    stub:
+    """
+    touch cluster_comparison_on_embedding.png
+    touch adata_clusters.h5ad
+    """
  }
