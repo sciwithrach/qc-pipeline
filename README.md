@@ -1,5 +1,8 @@
 # qc-pipeline
 
+[![Nextflow](https://img.shields.io/badge/version-%E2%89%A524.10.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-4.1.0-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/4.1.0)
+
 QC pipeline for mouse utricle single-cell data: cell calling (CellBender),
 doublet detection (vaeda + scDblFinder), minimal filtering, dimensionality
 reduction (TopOMetry), clustering (scSHC + clustree) and outlier removal.
