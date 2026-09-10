@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/lipovsek-lab/utricleqc/master/nextflow_schema.json",
-  "title": "utricleqc pipeline parameters",
-  "description": "QC pipeline for mouse utricle single-cell data.",
+  "$id": "https://raw.githubusercontent.com/lipovsek-lab/qc-pipeline/main/nextflow_schema.json",
+  "title": "lipovsek-lab/qc-pipeline pipeline parameters",
+  "description": "QC pipeline for mouse utricle single-cell data: cell calling, doublet detection, minimal filtering, dimensionality reduction, clustering and outlier removal.",
   "type": "object",
   "$defs": {
     "qc_pipeline_options": {
