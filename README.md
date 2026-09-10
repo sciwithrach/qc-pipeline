@@ -1,4 +1,4 @@
-# utricleqc
+# qc-pipeline
 
 QC pipeline for mouse utricle single-cell data: cell calling (CellBender),
 doublet detection (vaeda + scDblFinder), minimal filtering, dimensionality
