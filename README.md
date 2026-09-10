@@ -62,21 +62,18 @@ See `nextflow_schema.json` for the full parameter list. Key ones:
 - `test` — small bundled test data (`test/adata_test.h5ad`), for `main.nf`.
 - `myriad` — UCL Myriad SGE cluster.
 
-## Note on Cellbender
+## Running with `skip_cellbender = true` (default)
 
 This workflow currently only runs Cellbender without GPU acceleration.
 
 As such, I recommend you run Cellbender separately first with GPU acceleration
 and use the `skip_cellbender` parameter to use your output in this pipeline.
 
-## Running with `skip_cellbender = true` (default)
-
 When `skip_cellbender` is `true`, `main.nf` skips cell calling entirely —
 the Cellbender/batch-splitting/joining processes never run, and `raw_adata`
 is used as-is as the starting point for QC. This means:
 
-- **`raw_adata`** must already be a *cell-called* AnnData (empty droplets /
-  ambient RNA already removed), not the fully unfiltered matrix — e.g. the
+- **`raw_adata`** must already be a *cell-called* AnnData (nuclei with `cell_probability < 0.5` already removed), not the fully unfiltered matrix — e.g. the
   output of a Cellbender run done separately with GPU acceleration (see
   above), or already filtered by your own thresholding. No empty-droplet
   removal happens implicitly in this mode.
